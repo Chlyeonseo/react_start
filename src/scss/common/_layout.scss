@@ -1,0 +1,46 @@
+.content {
+	figure {
+		width: 100%;
+		height: 200px;
+		position: relative;
+		opacity: 0;
+		transition: 1s;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		h1 {
+			position: absolute;
+			left: 0vw;
+			bottom: -32px;
+			font: 200px/1 'arial';
+			color: #efefef;
+			opacity: 0;
+			transition: 1s 0.5s;
+		}
+	}
+	> .inner {
+		width: 80vw;
+		min-height: 700px;
+		margin: 100px auto;
+		transform: translateY(100px);
+		opacity: 0;
+		transition: 1s 0.8s;
+		position: relative;
+	}
+
+	&.on {
+		figure {
+			opacity: 1;
+			h1 {
+				left: 10vw;
+				opacity: 1;
+			}
+		}
+		> .inner {
+			opacity: 1;
+			transform: translateY(0px);
+		}
+	}
+}

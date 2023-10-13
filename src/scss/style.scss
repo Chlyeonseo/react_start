@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+$web_s: 1599px;
+$tablet: 1279px;
+$moblie: 539px;
+
+//common
+
+@import './common/reset';
+@import './common/header';
+@import './common/footer';
+@import './common/layout';
+@import './common/pop';
+//main
+@import './main/btns';
+@import './main/news';
+@import './main/vids';
+@import './main/content';
+@import './main/visual';
+//sub
+@import './sub/department';
+@import './sub/community';
+@import './sub/gallery';
+@import './sub/members';
+@import './sub/location';
+@import './sub/youtube';

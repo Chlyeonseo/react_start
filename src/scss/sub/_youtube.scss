@@ -1,0 +1,63 @@
+.Youtube {
+	article {
+		border-top: 1px solid #aaa;
+		padding: 20px 0px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		h2 {
+			width: 24%;
+			font: bold 32px/1 'arial';
+			color: #777;
+			word-break: break-all;
+			// 문자단위로 줄바꿈을 해주는 속성
+		}
+		.txt {
+			width: 37%;
+			display: flex;
+			flex-wrap: wrap;
+			align-content: space-between;
+			p {
+				font: 14px/1.2 'arial';
+				color: #999;
+				margin-bottom: 20px;
+				word-break: keep-all;
+			}
+			span {
+				font: 12px/1 'arial';
+				color: orange;
+			}
+		}
+		.pic {
+			width: 35%;
+			height: 200px;
+			background-color: #000;
+			filter: saturate(0);
+			transition: 0.5s;
+			position: relative;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+			.fa-youtube {
+				font-size: 80px;
+				position: absolute;
+				color: #111;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, 0%);
+				opacity: 0;
+				transition: 0.5s;
+				cursor: pointer;
+			}
+			&:hover {
+				filter: saturate(1.2);
+				.fa-youtube {
+					opacity: 1;
+					transform: translate(-50%, -50%);
+				}
+			}
+		}
+	}
+}
