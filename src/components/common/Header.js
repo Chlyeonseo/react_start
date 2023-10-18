@@ -1,11 +1,13 @@
 import { NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-// import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useRef } from "react";
+import Menu from "./Menu";
+
 //props는 상위 파일에서 하위 파일로
 //전해지는 모든것을 받는 매개변수
-//
 export default function Header({ type }) {
+    const menu = useRef(null);
     const active = { color: "#000" };
     let logoURL = "";
     // (조건) ? 참인경우 : 거짓인경우;
@@ -25,7 +27,7 @@ export default function Header({ type }) {
                 </Link>
                 <span>Here comse logo is</span>
             </h1>
-            <nav>
+            <nav id="webGnb">
                 <ul id="gnb">
                     <li>
                         <NavLink to="/department" activeStyle={active}>
@@ -60,9 +62,9 @@ export default function Header({ type }) {
                 </ul>
             </nav>
 
-
-            <FontAwesomeIcon icon={faBars} />
+            <FontAwesomeIcon icon={faBars}
+                onClick={() => menu.current.toggle()} />
+            <Menu ref={menu} />
         </header>
     )
 }
-

@@ -1,9 +1,15 @@
 import React from 'react'
 import Layout from '../common/Layout'
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 function Department() {
   const path = process.env.PUBLIC_URL;
   const [Members, setMembers] = useState([]);
+  useEffect(() => {
+    axios
+      .get(process.env.PUBLIC_URL + "/DB/members.json")
+      .then((json) => { setMembers(json.data.members); })
+  }, []);
 
 
   useEffect(() => {

@@ -31,6 +31,10 @@ function Btns() {
     }
 
     useEffect(() => {
+
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+
+
         //세로 위치값을 초기화하는 작업
         getPos();
         //브라우저가 리사이즈 될때도 

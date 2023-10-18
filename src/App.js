@@ -3,6 +3,7 @@ import { useState } from "react";
 //common
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
+import Menu from "./components/common/Menu";
 
 //main
 import Main from "./components/main/Main";
