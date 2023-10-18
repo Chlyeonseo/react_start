@@ -12,6 +12,76 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
+  <div class="defaults">검색봇이 SEO를 위해서 읽도록 하는 텍스트 데이터를 작성하는 곳입니다</div>
+  <div class="mask">로딩중.... 혹은 이미지 등으로 로딩을 표현하는 곳입니다</div>
+  <script>
+    const defaults = document.querySelector(".defaults");
+    const mask = document.querySelector(".mask");
+    let tags = "";
+    const baseURL = "https://chlyeonseo.github.io/react_start/";
+    const imgs = [
+      baseURL + "/img/Community.jpg",
+      baseURL + "/img/Department.jpg",
+      baseURL + "/img/Gallery.jpg",
+      baseURL + "/img/Location.jpg",
+      baseURL + "/img/Youtube.jpg",
+      baseURL + "/img/Members.jpg.jpg",
+    ];
+    const vids = [
+      baseURL + "/img/vid.mp4"
+    ]
+
+    function createDOM() {
+      imgs.forEach(el => {
+        tags += `<img src=${el}/>`
+      })
+      vids.forEach(el => {
+        tags += `<video src=${el}></video>`
+      })
+      defaults.innerHTML = tags;
+    }
+    //Promise.all() 프로미스 객체를 반환할 때까지 기다린 후, 리졸브 트루가 반환되면 이후 동기화처리하는 함수
+    Promise.all([loadImg(), loadVid()]).then(result => {
+      console.log(result)
+      const [loadImg, loadVid] = result;
+    })
+
+
+    //영상 및 이미지 소스가 모두 로딩완료되면 프로미스 객체로 true를 반환되는 함수를 제작합니다
+    let lenImg = imgs.length;
+    function loadImg() {
+      return new Promise((res, rej) => {
+        let countImg = 0;
+        const imgDOM = defaults.querySelectorAll("img");
+
+        imgDOM.forEach(el => {
+          el.onload = () => {
+            countImg++;
+            if (countImg === lenImg) {
+              res(true);
+            }
+          }
+        })
+      })
+    }
+    let lenVid = vids.length;
+    function loadVid() {
+      return new Promise((res, rej) => {
+        let countVid = 0;
+        const vidDOM = defaults.querySelectorAll("video");
+
+        vidDOM.forEach(el => {
+          el.onload = () => {
+            countVid++;
+            if (countVid === lenVid) {
+              res(true);
+            }
+          }
+        })
+      })
+    }
+    createDOM();
+  </script>
 </body>
 
 </html>
